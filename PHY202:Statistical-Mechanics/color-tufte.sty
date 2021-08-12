@@ -1,0 +1,107 @@
+\ProvidesPackage{color-tufte}[2021/03/11 Color Tufte]
+
+%%%%%%%%%%%%%%%%
+% Requirements %
+%%%%%%%%%%%%%%%%
+
+\RequirePackage{xcolor}
+\RequirePackage{graphicx}
+\RequirePackage{framed} 
+\RequirePackage{amsthm} 
+\RequirePackage[many]{tcolorbox}
+%%%%%%%%%%%%%%%%%%
+%  Environments  %
+%%%%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%%%%%%%% THEOREM %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newtheorem{main_equations}{}[]
+\tcolorboxenvironment{main_equations}{
+	boxrule=0pt,
+	boxsep=2pt,
+	colback={White!90!Dandelion},
+	enhanced jigsaw, 
+	%borderline west={2pt}{0pt}{Dandelion},
+	sharp corners,
+	before skip=10pt,
+	after skip=10pt,
+	breakable,
+	}
+%%%%%%%%%%%%%%% LEMMA %%%%%%%%%%%%%%%
+\newtheorem{lemma}{Lemma}[section]
+
+\tcolorboxenvironment{lemma}{
+  boxrule=0pt,
+  boxsep=2pt,
+  colback={White!90!Red},
+  enhanced jigsaw, 
+  borderline west={2pt}{0pt}{Red},
+  sharp corners,
+  before skip=10pt,
+  after skip=10pt,
+  breakable,
+}
+%%%%%%%%%%%%% DEFINITION %%%%%%%%%%%%%%%
+\newtheorem{assume}{Assumption}[section]
+
+\tcolorboxenvironment{assume}{
+  boxrule=0pt,
+  boxsep=2pt,
+  colback={White!90!Cerulean},
+  enhanced jigsaw, 
+  borderline west={2pt}{0pt}{Cerulean},
+  sharp corners,
+  before skip=10pt,
+  after skip=10pt,
+  breakable,
+}
+%%%%%%%%%%%%%% COROLLARY %%%%%%%%%%%%%%%%%%
+\newtheorem{corollary}{Corollary}[section]
+
+\tcolorboxenvironment{corollary}{
+	boxrule=0pt,
+	boxsep=2pt,
+	colback={White!90!Yellow},
+	enhanced jigsaw, 
+	borderline west={2pt}{0pt}{Yellow},
+	sharp corners,
+	before skip=10pt,
+	after skip=10pt,
+	breakable,
+	}
+%%%%%%%%%%%%% PROPOSITIONS %%%%%%%%%%%%%%%%%%%
+\newtheorem{definition}[subsection]{Definition}
+\tcolorboxenvironment{definition}{
+	boxrule=0pt,
+	boxsep=2pt,
+	colback={green!10},
+	enhanced jigsaw, 
+	borderline west={2pt}{0pt}{Green},
+	sharp corners,
+	before skip=10pt,
+	after skip=10pt,
+	breakable,
+	}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	%\tcolorboxenvironment{proof}{
+	%boxrule=0pt,
+	%boxsep=2pt,
+	%blanker,
+	%borderline west={2pt}{0pt}{NavyBlue!80!white},
+	%before skip=10pt,
+	%after skip=10pt,
+	%left=12pt,
+	%right=12pt,
+	%breakable,
+	%}
+
+%%%%%%%% Problem %%%%%%%%%%%%%
+\newtheorem{prob}{Problem}
+\newenvironment{problem}
+{\colorlet{shadecolor}{White!90!Orange}\begin{shaded}\begin{prob}}
+		{\end{prob}\end{shaded}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+

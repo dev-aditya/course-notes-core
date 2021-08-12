@@ -1,0 +1,241 @@
+\documentclass[a4paper]{article}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage[english]{babel}
+\usepackage{amsthm,amssymb,amsmath}
+\usepackage{enumerate}
+\usepackage{semantic} 
+\usepackage{graphicx} %%% \to incluse figures
+\usepackage{commath} %%% for \abs command
+\usepackage{subfig} %%%% for two figures side by side
+\usepackage{todonotes}
+\numberwithin{equation}{subsection}  %%% to number within section
+\usepackage{hyperref}  %%% for url 
+\hypersetup{
+	colorlinks=true,
+	linkcolor=blue,
+	filecolor=magenta,      
+	urlcolor=cyan,
+}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+	\title{\bf Electromagnetism\\ 
+		\large PHY102 } 
+	\author{}
+	\date{\today}
+	\maketitle
+	\begin{center}
+		\subsection*{\S Fundamental Law of Vector analysis}
+	\end{center}
+\paragraph{1.Fundamental Theorem of Gradients}
+\begin{equation}
+	dT = \vec{\nabla} T \cdot d\vec{l
+}\end{equation}
+%%%%%%%%%%%%%%
+\paragraph{2.Gauss Theorem}
+\begin{equation}
+	\int_{\nu} (\nabla \cdot \vec{v})d\tau = \oint_{S} \vec{v}\cdot d \vec{s} 
+\end{equation}
+%%%%%%%%%%%%%%
+\paragraph{3.Stoke's Theorem}
+\begin{equation}
+\int_{S} (\nabla \times \vec{v})\cdot d\vec{s} = \oint_{P} \vec{v}\cdot d \vec{l} 
+\end{equation}
+%%%%%%%%%%%%%%
+\paragraph{4.Gradient Operator}
+\begin{equation}
+\vec{\nabla} = (\frac{d}{dx}\hat{i}+\frac{d}{dy}\hat{j}+\frac{d}{dz}\hat{k})
+\end{equation}
+\textbf{Some Important realtions and Identities (let V \& U be a vector field and $\lambda$ be scalar field):}
+
+\begin{gather*}
+\vec{\nabla}\cdot (\vec{\nabla}\times \vec{V}) = 0 \quad \text{divergence of curl is zero} \\
+\vec{\nabla}\times (\vec{\nabla} \lambda) = 0 \quad \text{curl of gradient is zero }\\
+\vec{\nabla}\cdot (\vec{U}\times \vec{V}) = \vec{V}\cdot(\vec{\nabla} \times \vec{U}) - \vec{U}\cdot(\vec{\nabla} \times \vec{V})\\
+\vec{\nabla}\times (\vec{U}\times \vec{V}) = (\vec{V}\cdot\vec{\nabla}) \vec{U} - (\vec{U}\cdot\vec{\nabla})  \vec{V} + (\vec{\nabla}\cdot \vec{V}) \vec{U} - (\vec{\nabla}\cdot \vec{U}) \vec{V} \\
+\vec{\nabla} \times (f(r)\hat{r}) = 0 \quad (\text{curl of central force or field is zero})\\
+\vec{\nabla} \times (\vec{\nabla}\times \vec{V})  = \vec{\nabla} \cdot (\vec{\nabla} \cdot \vec{V}) - \nabla^2 \vec{V}\\
+\vec{\nabla} \times (\lambda \vec{V}) = \lambda \vec{\nabla} \times \vec{A} +  \vec{\nabla}\lambda \times \vec{A}
+\end{gather*}
+
+\textbf{How are divergences and curls defined?}
+\begin{description}
+	\item[Divergence] The divergence of a vector field $F(x)$ at a point $x_0$ is defined as the limit of the ratio of the surface integral of $F$ out of the surface of a closed volume V enclosing $x_0$ to the volume of V, as V shrinks to zero:
+	
+	
+	$$ \mathrm{div}\ \vec{F} |_{x_0} = \lim\limits_{V \to 0} \frac{1}{|V|} \int_{S(V)} \vec{F} \cdot\hat{n} dS$$
+where $|V|$ is the volume of $V$, $S(V)$ is the boundary of $V$, and $\hat{n}$ is the outward unit normal to that surface.Since this definition is coordinate-free, it shows that the divergence is the same in any coordinate system.
+
+\item[Curl]
+The curl of a vector field F,at a point is defined in terms of its projection onto various lines through the point. If $\hat{n}$ is any unit vector, the projection of the curl of F onto $\hat{n}$ is defined to be the limiting value of a closed line integral in a plane orthogonal to $\hat{n}$ divided by the area enclosed, as the path of integration is contracted around the point.
+
+$$ \text{curl}\ \vec{F} \cdot\hat{n} = \lim\limits_{A \to 0} \left(\frac{1}{|A|} \oint_C \vec{F} \cdot d\vec{r}\right)$$
+
+where $\oint_C \vec{F} \cdot d\vec{r}$ is a line integral along the boundary of the area in question, and $|A|$ is the magnitude of the area. This equation defines the projection of the curl of F onto $\hat{n}$, where $\hat{n}$ is the normal vector to the surface bounded by C; and C is defined via the right-hand rule
+\end{description}
+
+
+
+\paragraph{}%%%%%% for extra space
+\paragraph{}
+\begin{center}
+	\subsection*{\S Elektrodynamisch}
+\end{center}
+%%%%%%%%%%%%%%
+\paragraph{1.Coulombs Law}
+\begin{equation}
+	\vec{F} = \frac{1}{4\pi\epsilon_0} \frac{q_1 q_1}{r^2} \hat{r} 
+\end{equation}
+%%%%%%%%%%%%%%
+\paragraph{2.Electric Field}
+\begin{equation}
+\vec{E(  r)} = \frac{1}{4\pi\epsilon_0} \int_{\nu} \frac{\rho(r')}{r^2} \hat{r}\ d\tau '
+\end{equation}
+\paragraph{3.Electric Potential}
+\begin{equation}
+\phi = - \int_{a}^{b} \vec{E}\cdot d\vec{l}
+\end{equation}
+\begin{center}
+	\textbf{Or}
+\end{center}
+\begin{equation*}
+	\vec{E} = -\nabla \phi
+\end{equation*}
+
+\paragraph{5.Poission's Equation and Laplace's Equation}
+\begin{equation}
+\label{poission}
+ \nabla^2 \phi = -\rho/\epsilon_0\qquad \text{Poission's Equation}
+\end{equation}
+\begin{equation}
+\label{poission}
+\nabla^2 \phi = 0\qquad \text{Laplace's Equation}
+\end{equation}
+\paragraph{6.Lorentz Forces}
+\begin{equation}
+\vec{F} = q(\vec{E}+\vec{v}\times \vec{B})
+\end{equation}
+\paragraph{7.Biot-Savarts Law}
+\begin{equation}
+\vec{B}(r) = \frac{\mu _0}{4\pi}  \frac{q[\vec{v}\times \vec{r}]}{r^3}
+\end{equation}
+\paragraph{}%%%%%% for extra space
+\paragraph{}\begin{center}
+\subsection*{\S Electric Current}
+\end{center}
+
+\paragraph{1.Current density and its relations} 
+\begin{equation}
+\vec{j} = \sigma \vec{E} \quad\text{For steady currents}
+\end{equation}
+\begin{equation}
+i = \int_{S} \vec{j}\cdot d\vec{a}
+\end{equation}
+\begin{equation}
+\vec{j} = \rho _e \bar{u_e}
+\end{equation}
+\paragraph{2.Steady Currents and Equation of contuinity}
+\begin{equation}
+\vec{\nabla}\cdot \vec{j}(\vec{r},t) = - \frac{\partial \rho(\vec{r},t)}{\partial t}
+\end{equation}
+And in case of steady currents
+\begin{equation}
+\vec{\nabla}\cdot \vec{j} =0
+\end{equation}
+\paragraph{3. Force on a current carrying conductor in a magnetic  field}
+\begin{equation}
+\vec{F} = i \int d\vec{l}\times \vec{B}
+\end{equation}
+\paragraph{4. Force on a current carrying loop in a magnetic field.}
+\begin{equation}
+ \vec{F} = \vec{\nabla} (\vec{\mu} \cdot \vec{B})
+\end{equation}
+
+\paragraph{Magnetic field due to any arbitrary moving charge distribution}
+
+\begin{equation}
+\begin{aligned}
+B(\vec{r}) = \frac{\mu_0}{4\pi} \int \rho' {[\vec{v}\times \vec{r}] \over {r}^3} dV'\\
+\text{Or} \\
+B(\vec{r}) = \frac{\mu_0}{4\pi} \int  {[\vec{j'}\times \vec{r}] \over {r}^3} dV'\\
+\end{aligned}
+\end{equation}
+
+ 
+where primes variables denote the position of charge distribution and the un-primed variables denote the position of the point where field is tu be calculated.
+
+
+\paragraph{4.Maxwell's equation}
+\begin{gather}
+\vec{\nabla} \cdot \vec{E}(\vec{r},t) = {\rho(\vec{r},t) \over \epsilon_0} \\
+\vec{\nabla} \times \vec{E }(\vec{r},t)  + \frac{\partial \vec{B}(\vec{r},t) }{\partial t} = 0 \\
+\vec{\nabla}\cdot \vec{B} (\vec{r},t)= 0\\
+\vec{\nabla}  \times \vec{B}(\vec{r},t) - \frac{1}{c^2}\frac{\partial\vec{E}(\vec{r},t)}{\partial t} =\mu_0 \vec{j} (\vec{r},t)
+\end{gather}
+The above equations are valid for any space-time configuartion. 
+
+
+In the above case the most important thing to notice is that there are 8 equations to solve(i.e. two of them are scalar and two are vector equations with 3 components in  each.). But the unknowns are 6 (i.e. the three components of Electric and magnetic field each). So, mathematically the solutions are infinite. But is it Ture?.Lets see.
+
+ If we compare the Gass theorem for Electric fields and the Ampere $\tilde{}$ Maxwell's equation for magnetic fields, we can see that the quantities $\vec{j}$ and $\rho$ are related through the equation of contuinity. Also, observe that the gauss law for magnetism and faraday's law are independent of the source and are homogeneous equations. And the othere two are dependent on the source (and non-homogeneous too).  
+ 
+You may ask a questions. Why specifying the EM Fields as divergences and curls?. What is so special about them? Why are they alone enough or do we need any other realtion for specifying fields.The answer lies in \href{https://en.wikipedia.org/wiki/Helmholtz_decomposition}{Helmholtz Theorem}. The curl free part of the vector (i.e $\vec{\nabla} \phi$) and the divergence free part (i.e. $ \vec{\nabla} \times \vec{A}$ ). Physically, we can interpret it as the div tells us how much 
+a vector is pointing in specific direction \& curl says how much the vector points in normal direction.\\ Coming back to the Maxwell'ss equations. The gauss law for magnetic fields implies:
+
+$$ \underbrace{\vec{\nabla}\cdot \vec{B} (\vec{r},t)= 0}_{\text{No monoploes exist}} \Rightarrow \vec{B} = \vec{\nabla}\times \vec{A}$$
+We call $\vec{A}$ as a Vector potential.\\
+If we substitute the above relation in eq(0.0.21) we get to the realtion:
+
+
+$$ \vec{\nabla} \times \left(\vec{E} + \frac{\partial \vec{A}}{\partial t}\right) = 0 \quad \rightarrow \text{it's curl free (Why?)}$$
+
+$$ \Rightarrow \vec{E} + \frac{\partial \vec{A}}{\partial t} =   - \vec{\nabla} \phi \quad \{ \text{$\phi$ has nothing to do with electrostatic potential} \} $$                   
+
+The minus sign above is purely a convention as to make the equation consistent with electrostatic. We call $\phi$ as scalar potential.
+
+At the end we get.
+
+\begin{gather}
+	\vec{B} = \vec{\nabla} \times \vec{A} \quad \& \quad \vec{E} = - \frac{\partial \vec{A}}{\partial t}   - \vec{\nabla} \phi 	
+	\label{potentials}
+\end{gather}
+
+Now we need not to solve the 8 equations. But the problem has been reduced to 4 equations (i.e. $\vec{A}$ with three components and $\phi$ scalar field). So, all electric and magnetic fields can be found using four quantities.
+
+Now, let's see what happens when we substitute the results we got in eq \ref{potentials} in the ``source dependent" ``non-homogeneous" Maxwell equations.
+
+$$
+\Rightarrow \vec{\nabla} \cdot \vec{E} =\vec{\nabla} \cdot \left(- \frac{\partial \vec{A}}{\partial t}   - \vec{\nabla} \phi\right) = {\rho \over \epsilon_0}
+$$
+\begin{equation}
+\Rightarrow   \frac{\partial( \vec{\nabla}\cdot\vec{A})}{\partial t}   + \nabla^2 \phi = -{\rho \over \epsilon_0}
+\label{laplacian}
+\end{equation}
+\& 
+ $$
+ \Rightarrow \vec{\nabla}  \times \vec{B} - \frac{1}{c^2}\frac{\partial\vec{E}}{\partial t} =\mu_0 \vec{j} 
+ $$
+ $$
+ \Rightarrow \vec{\nabla}  \times (\vec{\nabla}  \times \vec{A}) - \frac{1}{c^2}(   - \vec{\nabla} \phi - \frac{\partial\vec{A}}{\partial t}) =\mu_0 \vec{j}
+ $$
+ It can further be simplified and can be written as:
+ 
+ \begin{equation}
+ 	\vec{\nabla}\left( \vec{\nabla} \cdot \vec{A} +  \frac{1}{c^2} \frac{\partial\phi}{\partial t}\right) + {\frac{1}{c^2} \frac{\partial^2\vec{A}}{\partial^2 t} - \nabla^2 \vec{A}}\footnote{$ \text{the operator} (\frac{1}{c^2} \frac{\partial^2}{\partial^2t} - \nabla^2) \text{is also written as} \ \Box\ \text{d'alembert operator}  $} = \mu_0 \vec{j}\label{ocillation}
+ \end{equation}\todo[color= white]{Remember: 2\textsuperscript{nd} derivative means the curvature of the curve}
+ 
+ Now, you can't solve the two equation that we got above ,because $\vec{A}$ and $\phi$ are inter-dependent.
+ 
+ Observe that if $\vec{\nabla}\cdot \vec{A} = 0$ (called Coulomb's Gauge) then the Eq \ref{laplacian} becomes a poisson's equation. Or if we put $(\vec{\nabla} \cdot \vec{A} +  \frac{1}{c^2} \frac{\partial\phi}{\partial t}) = 0$ (called Lorentz Gauge) then the equation \ref{ocillation} looks like eq of simple harmonic motion in 3D. And why can we do that? Simply because if suppose we find a field $\vec{A}$ which satisfies the relation $\vec{B} = \vec{\nabla} \times \vec{A}$ but is unable to satisfy the Coulomb Gauge, the we can simply add gradient of a scalar field $\chi$ to it such that $\vec{A'} = \vec{A} + \vec{\nabla} \chi$ and  $\vec{\nabla} \cdot \vec{A} = - {\nabla}^2 \chi$.
+ Since, $\vec{A}$ and $\phi$ are auxilary quantities \& are not unique. If we change one i.e $\vec{A'} = \vec{A} + \vec{\nabla} \chi$, then simultaneously we have to change $ \phi' = \phi - \frac{\partial \chi}{\partial t}$. To compensate for the change in $\vec{E}$. It is called Gauge invariance.(Which one is a better choice?).
+ 
+ Now coming back to the equations of fields in term of vector and scalar potential. For $\phi$ general solution (for coulomb gauge) can be written for the free space (i.e $\phi \to 0$ as $r \to 0$).
+ 
+ $$ \phi (\vec{r},t) = \int \underbrace{\frac{\rho(\vec{r},t) d V'}{4\pi \epsilon_0 |\vec{r}-\vec{r_0}|}}_ {\text{notice the t dependence.} \atop \text{ It's not electrostatics}} $$
+ 
+ But the $\phi(\vec{r},t)$, depends on $\rho(\vec{r},t)$. So, if we change the $\rho$ at some point far away; the $\phi$ should immediately change at every point \& 
+ it violates the S.T.R. But no $\vec{A}$ is also there which counters the violation of S.T.R.
+
+\paragraph{Gauge Transformations} These are the possibility of changing the potential without changing the EM fields.
+
+Fundamentally, electric fields and the magnetic fields are A and $\phi$.
+\end{document}

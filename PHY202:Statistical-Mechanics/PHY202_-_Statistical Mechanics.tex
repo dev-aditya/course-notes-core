@@ -1,0 +1,480 @@
+% !TEX program = pdflatex
+\documentclass{tufte-handout}
+
+\title{\centering PHY202: Statistical Physics}
+\author{Aditya Dev}
+
+
+\date{\today} % without \date command, current date is supplied
+
+%\geometry{showframe} % display margins for debugging page layout
+
+\usepackage{graphicx} % allow embedded images
+  \setkeys{Gin}{width=\linewidth,totalheight=\textheight,keepaspectratio}
+\usepackage{amsmath}  % extended mathematics
+\usepackage{booktabs} % book-quality tables
+\usepackage{units}    % non-stacked fractions and better unit spacing
+\usepackage{multicol} % multiple column layout facilities
+\usepackage{lipsum}   % filler text
+\usepackage{fancyvrb} % extended verbatim environments
+  \fvset{fontsize=\normalsize}% default font size for fancy-verbatim environments
+
+% Standardize command font styles and environments
+\newcommand{\doccmd}[1]{\texttt{\textbackslash#1}}% command name -- adds backslash automatically
+\newcommand{\docopt}[1]{\ensuremath{\langle}\textrm{\textit{#1}}\ensuremath{\rangle}}% optional command argument
+\newcommand{\docarg}[1]{\textrm{\textit{#1}}}% (required) command argument
+\newcommand{\docenv}[1]{\textsf{#1}}% environment name
+\newcommand{\docpkg}[1]{\texttt{#1}}% package name
+\newcommand{\doccls}[1]{\texttt{#1}}% document class name
+\newcommand{\docclsopt}[1]{\texttt{#1}}% document class option name
+\newenvironment{docspec}{\begin{quote}\noindent}{\end{quote}}% command specification environment
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% add numbers to chapters, sections, subsections
+\setcounter{secnumdepth}{2}
+\usepackage{xcolor}
+\definecolor{g1}{HTML}{077358}
+\definecolor{g2}{HTML}{00b096}
+% chapter format  %(if you use tufte-book class)
+%\titleformat{\chapter}%
+%{\huge\rmfamily\itshape\color{red}}% format applied to label+text
+%{\llap{\colorbox{red}{\parbox{1.5cm}{\hfill\itshape\huge\color{white}\thechapter}}}}% label
+%{2pt}% horizontal separation between label and title body
+%{}% before the title body
+%[]% after the title body
+
+% section format
+\titleformat{\section}%
+{\normalfont\Large\itshape\color{g1}}% format applied to label+text
+{\llap{\colorbox{g1}{\parbox{1.5cm}{\hfill\color{white}\thesection}}}}% label
+{1em}% horizontal separation between label and title body
+{}% before the title body
+[]% after the title body
+
+% subsection format
+\titleformat{\subsection}%
+{\normalfont\large\itshape\color{g2}}% format applied to label+text
+{\llap{\colorbox{g2}{\parbox{1.5cm}{\hfill\color{white}\thesubsection}}}}% label
+{1em}% horizontal separation between label and title body
+{}% before the title body
+[]% after the title body
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{color-tufte}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\begin{document}
+
+\maketitle% this prints the handout title, author, and date
+
+\begin{abstract}
+\noindent
+I'm made these notes after following the lectures by Prof. Susskind 
+\end{abstract}
+
+%\printclassoptions
+
+
+\section{Entropy}\label{sec:page-layout}
+
+We define Entropy as follows:
+
+\begin{definition}[Entropy]\label{def:entropy}
+	Suppose a system can take values from set \(\mathcal{S} = \{x_1, x_2, x_3, \ldots x_n\}\), 
+	with probability of 
+	\(x_i\) being \(\mu(x_i)\). Then the (\textit{Boltzmann}) entropy \(S\) is defined as 
+	\[S = -k_b \sum _{i} \mu(x_i) \log(\mu(x_i))\]
+\end{definition}
+
+Entropy can be thought of as the amount of ignorance/uncertainity that you have. It's obvious that if 
+probability is 1 or 0 the you are \(100 \%\) sure that a particular result will be observed or not 
+observed. 
+
+\begin{assume} 
+	If \(S_a\) and \(S_b\) be respective entropies for system A and B. Then 
+	\[S_{\mathrm{net}} = S_a + S_b\]
+	\label{assum:entropy}
+\end{assume}
+
+Using above assumption, if we have \(N\) identical systems then the net entropy of the system is
+given as \(S = -Nk_b \sum \mu_i\log(\mu_i)\)
+
+\subsection{*On existence of Entropy}
+
+Does entropy exists? Or is it just a mathematial formalism? 
+
+I'll try to answer it it in my own way. But for that I need to make an assumption, and
+it's a fairly good assumption. Let me give an example to support my argument, 
+suppose we are given an experiment  of tossing a fair coin, let say \(n\) number 
+of times, and we are asked to count probabilities of number of getting a head or tails. 
+
+Since, the above experiment follows a Binomial distribution, we know that most number of 
+times we are getting equal number of heads and tails (\textit{because number of arrangement given 
+equal number of heads and tails is the most}). So, the assumption that we'll make is:
+\begin{assume}
+	Given a constraint on a system, in equilibrium, the system will exist in the state with maximum 
+	number of configurations (\textit{or microstates}). And state is consistent with the constraint. 
+\end{assume}
+
+We'll see in Microcanonical Ensemble, the constrain on the system is energy \(E\), volume \(V\) and \(N\) the 
+number of particles. 
+
+Let \(\Omega(E, V, N)\) denote the possible number of microstates of the system. Let's sub-divide this 
+system into two non-interacting parts, call \(A\) and \(B\). So, we have:
+\[\begin{gathered}
+	\Omega(E, V, N) = \Omega_A(E_A, V_A, N_A)\Omega_B(E_B, V_B, N_B)\\
+	E = E_A + E_B\\
+	V = V_A + V_B\\
+	N = N_A + N_B
+\end{gathered}\]
+
+Since, by assumption 1.2 we need to maximize the \(\Omega\). So, 
+\[\begin{gathered}
+	\dfrac{\partial \Omega}{\partial E} = 0\\
+	\dfrac{\partial (\Omega_A \Omega_B)}{\partial E} = 0
+\end{gathered}\]
+
+Since, \(E\) is constant, we can formulate the whole argument in terms of either \(E_A\) or \(E_B\). 
+
+\[\begin{gathered}
+	\dfrac{\partial (\Omega_A(E_A) \Omega_B(E - E_A))}{\partial E_A} = 0\\
+	\dfrac{\partial (\Omega_A(E_A))}{\partial E_A}\Omega_B(E - E_A) -
+	\dfrac{\partial (\Omega_B(E - E_A))}{\partial E_A}\Omega_A(E_A) = 0\\
+	\frac{1}{\Omega_A(E_A)}\dfrac{\partial (\Omega_A(E_A))}{\partial E_A} = 
+	\frac{1}{\Omega_B(E - E_A)}\dfrac{\partial (\Omega_B(E - E_A))}{\partial E_A}\\
+	\dfrac{\partial \log(\Omega_A(E_A))}{\partial E_A} = \dfrac{\partial 
+	\log(\Omega_B(E - E_A))}{\partial E_A}
+\end{gathered}\]
+
+We define the quantity \(k_b\log(\Omega)\) \footnote{the factor \(k_b\) has something to do 
+with units}and ``Entropy'' and denote it be \(S\).  
+\[S = k_b\log(\Omega)\]
+
+Hence, the entropy comes before any of the physical quantities like pressure, temperature etc. 
+We'll see in the next section, that how the two definition of Entropy are related.
+
+\section{Microcanonical Ensemble} 
+
+
+
+In \textit{Microcanonical Ensemble} \footnote{\textit{An \textbf{ensemble} is a large number of points in the phase space that can be described 
+by a density function 
+\(\mu (x, p)\)}} we consider an isolated system with \(N\) 
+particles and energy \(E\) in a volume  
+\(V\). By definition, such a system exchanges neither particles nor energy with the surroundings.
+
+Let a system consist of {\(N\) particles}, for which each particle can have \(M\) configurations 
+\footnote{Configurations can be the rotation angle about some axis or spin being up or down etc}.
+Also, if a particle is in \(i^{th}\) state then 
+let the energy associated with that particle be \(\epsilon _i\).  
+
+For this system the total energy  
+\(E = \sum n_i \epsilon_i\), where \(n_i\) denotes the number of particles in state (\textit{
+	 or configuration i
+}). Hence the constrain equations on the system are:
+\[\begin{gathered}
+	E = \sum n_i \epsilon_i\\
+	\sum n_i = N
+\end{gathered}\]
+
+In the thermodynamic limit of Statistical mechanics we usually assume \(N\) and \(V\) to be very large
+(i.e \(N, V \to \infty\)) 
+such that \(\rho = \frac{N}{V}\) is constant. In such case, we can assume that the number of particle
+in each state increases proportional to \(N\). Let probability
+of finding particle in \(i^{th}\) configuration being \(\mu_i\) and by the definition of probability
+ we have \(\mu_i = \lim_{N \to \infty} \frac{n_i}{N}\) or \(n_i = \mu_i N\). 
+
+ Now, we can reformulate the above constrain equations in terms of probability. And we have 
+ \[\begin{gathered}
+	 \sum \mu_i = 1 \Longleftrightarrow \sum n_i = N\tag*{1}\\
+	 \sum_i N\mu_i \epsilon_i = E \Longleftrightarrow  \sum_i \mu_i \epsilon_i = \epsilon \\
+ \end{gathered}\]
+
+ We define \(\epsilon = \frac{E}{N} = \langle E \rangle\) as average energy per particle.
+
+Let \(\Omega\) be the number of possible microstates of the system
+\footnote{in our case it's the possible arrangements N particles, with exactly \(n_i\) number of particles
+in \(i^{th}\)configuration}.
+ If you know some basics combinatorics, then for our case \(\Omega\) is give as 
+ \[\begin{gathered}
+	\Omega  = \frac{N!}{\Pi n_i !}\\
+	\log(\Omega) = \log(N!) - \sum \log(n_i!)
+ \end{gathered}\]
+Now we need to introduce \textit{Stirling's Approximation}, it says for large \(N\)
+\[\begin{gathered}
+	N! \sim e^{-N} N^N\\
+	log(N!) \sim N \log(N) - N
+\end{gathered}\]
+
+Therefore we have, 
+\[\begin{gathered}
+	\log(\Omega) = N \log(N) - N - \sum n_i \log(n_i)  + \sum n_i \\
+	\log(\Omega) = N \log(N) - N - \sum n_i \log(n_i)  + N \\
+	\log(\Omega) = N \log(N) - \sum N \mu _i\log(N)  - \sum N \mu _i\log(\mu_i)\\ 
+	\log(\Omega) = N \log(N) - N \log(N) \sum  \mu _i  - \sum N \mu_i \log(\mu_i) \\
+	\log(\Omega) = -N\sum \mu_i \log(\mu_i)
+\end{gathered}\]
+
+Buy assumption 1.1 observe that  \(\boxed{S = k_b\log(\Omega) =
+ -N k_b \sum \mu_i\log(\mu_i)}\). Hence, entropy of the system can also be defined as 
+ \(S = k_b \log(\Omega)\)\footnote{\(\Omega\) is the total number of accessible
+ microstates of the system}. Also, note that \(-k_b \sum \mu_i\log(\mu_i)\)  is the entropy associated
+ with each particle. 
+
+\section{Boltzmann Distribution}
+\textit{In statistical mechanics and mathematics, a Boltzmann distribution 
+(also called Gibbs distribution) is a probability distribution or probability
+ measure that gives the probability that a system will be in a 
+certain state as a function of that state's energy and the temperature of the system.}
+
+We'll try to derive the Boltzmann distribution from Microcanonical ensemble. The Boltzmann 
+distribution is the distribution that maximizes the entropy \(S = -k_b 
+\sum \mu_i\log(\mu_i)\) or equivalently \(S = -\sum \mu_i\log(\mu_i)\)
+
+We need to find the probability distribution of the system under the given constrains, such that 
+the entropy is maximum Hence, we would use \href{https://en.wikipedia.org/wiki/Lagrange_multiplier}{Lagrange 
+multiplier}. 
+
+Let 
+\[\begin{gathered}
+	F(\{\mu_i\}) = - \sum \mu_i \log(\mu_i) + \alpha (1 - 
+\sum \mu_i) + \beta (\epsilon - \sum \mu_i \epsilon_i) \\
+= - \sum \mu_i \log(\mu_i) + \alpha G(\{\mu_i\}) + \beta G'(\{\mu_i\}) \tag*{2}
+\end{gathered}\] 
+where \(G'(\{\mu_i\}) = 0 \ \& \ G(\{\mu_i\}) = 0\) are constrain equations\footnote{
+	there was no need for them but, it looks trippy, and that's how mathematicians do it. 
+}. 
+
+To maximize, differentiate (2) w.r.t \(\mu_i\) and equate to \(0\), we get
+\[\begin{gathered}
+	\dfrac{d F}{d \mu_i}= - \log(\mu_i) - 1 - \alpha - \beta  \epsilon_i =0 \\
+	\mu_i = e^{-1 - \alpha} e^{-\beta \epsilon}\\
+	\boxed{\mu_i(\vec{r}, \vec{p}) = \frac{e^{-\beta \epsilon_i(\vec{r}, \vec{p})}}{z}}
+\end{gathered}\] 
+
+where \(z = e^{1 + \alpha}\). \(z\) is called the \textit{partition function}. \textbf{NOTICE, THE DEPENDENCE OF 
+ENERGY ON PHASE SPACE}
+
+Substitute \(\mu_i\) in above equations and you will see that 
+\[\begin{gathered}
+	\sum \mu_i = 1 \Longleftrightarrow \boxed{z(\beta) = \sum e^{-\beta \epsilon_i}}\\
+	\sum \epsilon_i \mu_i = \epsilon \Longleftrightarrow \sum \epsilon_i  
+	e^{-\beta \epsilon_i} = z \epsilon
+\end{gathered}\]
+
+Also, observe that 
+\[\begin{gathered}
+	\dfrac{\partial z(\beta)}{\partial \beta} = - \sum \epsilon_i e^{-\beta \epsilon_i}= -z\epsilon\\
+	\boxed{\dfrac{\partial \log(z)}{\partial \beta} = - \epsilon}
+\end{gathered}\]
+
+Let's look at how does the Entropy looks like. We had 
+\[\begin{gathered}
+	S = -k_b \sum \mu_i \log(\mu_i)\\
+	= -\frac{k_b}{z} \sum \{ e^{-\beta \epsilon_i} \log(e^{-\beta \epsilon_i}) 
+	- e^{-\beta \epsilon_i} \log(z)\}\\
+	= \frac{k_b}{z} \sum \{ e^{-\beta \epsilon_i}{\beta \epsilon_i}) 
+	+ e^{-\beta \epsilon_i} \log(z)\}\\
+	= \beta k_b \sum \frac{e^{-\beta \epsilon_i}}{z} \epsilon_i  + k_b \log(z)
+	\sum \frac{e^{-\beta \epsilon_i}}{z}\\
+	\boxed{S = k_b\beta \epsilon + k_b \log(z)}
+\end{gathered}\]
+
+We define (\textit{stastical definition of temperature}) temperature as 
+\footnote{don't question why is that so, it is what it is}
+\[\dfrac{\partial S}{\partial E} = \frac{1}{T}\]
+So, 
+
+\[\begin{gathered}
+	\frac{1}{T} = \dfrac{\partial S}{\partial \epsilon} = k_b \beta\\
+	\beta = \frac{1}{k_b T} 
+\end{gathered}\]
+
+So, finally everything unveils it self and we get 
+\begin{main_equations}
+\[
+\begin{gathered}
+	\mu_i = \frac{e^{\frac{-\epsilon_i}{k_b T}}}{z}\\
+	z(T) = \sum_{i} e^{\frac{-\epsilon_i}{k_b T}}\\
+	\epsilon = -\frac{\partial \log(z)}{\partial \beta} = 
+	k_B T^2 \frac{\partial \log(z)}{\partial T}\\
+	S = \frac{\epsilon}{T} + k_b \log(z)
+\end{gathered}
+\]
+\end{main_equations}
+
+\subsection{Relation to thermodynamic variables}
+
+We know variance is defined as :
+\[\begin{gathered}
+	\langle (\Delta X)^2 \rangle= \left\langle (X - \langle X\rangle)^2\right \rangle\\
+	 = \langle X^2 \rangle - (\langle X \rangle)^2
+\end{gathered}\]
+
+We calculate:
+\[\begin{gathered}
+	\langle E \rangle = \epsilon = -\frac{\partial \log(z)}{\partial \beta}\\
+	\langle E \rangle = \frac{1}{z}\sum_i e^{-\beta E_i} E_i ^2 \\
+	= \frac{1}{z} \frac{\partial^2 z}{\partial^2 \beta}
+\end{gathered}\]
+
+So, \(\langle (\Delta E)^2 \rangle\) is:
+\[\begin{gathered}
+	\langle (\Delta E)^2 \rangle = \frac{1}{z} \frac{\partial^2 z}{\partial^2 \beta} 
+	- \left(-\frac{1}{z} \frac{\partial z}{\partial\beta}\right)^2\\
+	=  \frac{\partial^2 \log(z)}{\partial^2 \beta} + \left(\frac{1}{z} 
+	\frac{\partial z}{\partial\beta}\right)^2
+	-\left(\frac{1}{z} \frac{\partial z}{\partial\beta}\right)^2\\
+	= \frac{\partial^2 \log(z)}{\partial^2 \beta}\\
+	= - \dfrac{\partial \langle E \rangle}{\partial \beta}
+\end{gathered}\]
+or we can write it as 
+\[\begin{gathered}
+	\langle (\Delta E)^2 \rangle = - \dfrac{\partial \langle E \rangle}{\partial \beta}\\
+	= - \dfrac{\partial \langle E \rangle}{\partial T}\dfrac{\partial T}{\partial \beta}\\
+	= k_b T^2\dfrac{\partial \langle E \rangle}{\partial T}\\
+	= k_b T^2 C_v\\
+	\text{or}\\
+	\boxed{C_v = \frac{1}{k_b T^2} \langle (\Delta E)^2 \rangle}
+\end{gathered}\]
+where \(C_v\) is the heat capacity at constant volume\footnote{it's heat capacity at ``constant volume"
+because we are talking about Microcanonical
+ensemble.}. 
+
+Observe that: 
+\[A =  E - TS= -k_b T \log(z)\]
+
+where \(A\) is the helmholtz free energy\footnote{it's the definition}. 
+
+We define pressure \(P\) to be:
+\[\begin{gathered}
+	P = \left. -\dfrac{\partial E}{\partial V} \right|_{S} 
+= \left. -\dfrac{\partial A}{\partial V} \right|_{T}\\
+\boxed{P =  k_b T \left (\dfrac{\partial \log(z)}{\partial V} \right ) _{T} } \tag*{1}
+\end{gathered}\]
+\subsection{*Meaning of Partition Function}
+
+\textit{Source: Wikipedia}
+
+
+It may not be obvious why the partition function, as we have defined it above, is an important 
+quantity. First, consider what goes into it. The partition function is a function of the temperature 
+\(T\) and the microstate energies \(\epsilon_1, \epsilon_2, \epsilon_3, \) etc. 
+The microstate energies are determined by other 
+thermodynamic variables, such as the number of particles and the volume, as well as microscopic 
+quantities like the mass of the constituent particles. This dependence on microscopic variables 
+is the central point of statistical mechanics. With a model of the microscopic constituents of 
+a system, one can calculate the microstate energies, and thus the partition function, which will 
+then allow us to calculate all the other thermodynamic properties of the system.
+
+The partition function can be related to thermodynamic properties because it has a very important
+ statistical meaning. The probability \(\mu_i\) that the system occupies microstate \(i\) is
+
+    \[\mu_i = \frac{1}{z} \mathrm{e}^{- \beta \epsilon_i}\]
+
+Thus, as shown above, the partition function plays the role of a normalizing constant 
+(note that it does not depend on i), ensuring that the probabilities sum up to one:
+
+    \[\sum_i \mu_i = \frac{1}{z} \sum_i \mathrm{e}^{- \beta \epsilon_i} = \frac{1}{z} z = 1\]
+
+This is the reason for calling \(z\) the ``partition function": it encodes how the probabilities 
+are partitioned among the different microstates, based on their individual energies.
+The letter \(z\) stands for the German word \textit{Zustandssumme}, ``sum over states". The usefulness
+of the partition function stems from the fact that it can be used to relate macroscopic 
+thermodynamic quantities to the microscopic details of a system through the derivatives 
+of its partition function. Finding the partition function is also equivalent to performing a 
+Laplace transform of the density of states function from the energy domain to the \(\beta\) domain, 
+and the inverse Laplace transform of the partition function reclaims the state density function 
+of energies.
+
+\section{The Ideal Gas}
+
+\subsection{Introduction}
+Suppose a system is made of N sub-systems (\textit{particles}) with negligible interaction energy, that is, 
+we can assume the particles are essentially non-interacting. If the partition functions of the 
+sub-systems are \(\zeta_1, \zeta_2, \ldots \zeta _N,\) respectively then the partition function 
+of the entire system is the product 
+of the individual partition functions:
+
+    \[z =\prod_{j=1}^{N} \zeta_j.\]
+
+If the sub-systems have the same physical properties, then their partition functions
+ are equal, \(\zeta_1, \zeta_2, \ldots \zeta _N,\) in which case
+
+    \[z = \zeta^N\]
+
+However, there is a well-known exception to this rule. If the sub-systems 
+are actually identical particles, in the quantum mechanical sense that they 
+are impossible to distinguish even in principle, the total partition function 
+must be divided by a \(N!\)\footnote{This is to ensure that we do not ``over-count" 
+the number of microstates. }:
+
+    \[z = \frac{\zeta^N}{N!}\]
+
+While this may seem like a strange requirement, it is actually necessary 
+to preserve the existence of a thermodynamic limit for such systems. 
+This is known as the Gibbs paradox.
+\subsection{The partition function for ideal gas}
+
+If you have taken an introductory probability theory course, then you may know in continuous 
+case, PMF (probability mass function) is replaced by PDF (probability density function). 
+
+In classical mechanics, the position and momentum variables of a particle can vary continuously, 
+so the set of microstates is actually uncountable. In classical statistical mechanics, it is 
+rather inaccurate to express the partition function as a sum of discrete terms. 
+In this case we must describe the partition function using an integral rather than a sum.
+
+We'll assume the systen to be non-interacting. 
+The partion function for single particle (assuming it to a subsystem) is defined as\footnote{
+	To make it into a dimensionless quantity, we must divide it by h, it also has something to do with 
+	the precision with which we can measure the position and momenta in phase space.
+}:
+\[\begin{gathered}
+	\zeta = \frac{1}{h^3}\int_p \int_x e^{-\beta E(x, p)} d^3x d^3p
+\end{gathered}\]
+
+For non-interating particles energy is due to momentum only. So, it implies:
+\[\begin{gathered}
+	\zeta = \frac{1}{h^3}\int_p \int_x e^{-\beta \frac{p^2}{2m}} d^3x d^3p\\
+	 = \frac{1}{h^3} \int_x d^3 x \int_p e^{-\beta \frac{p^2}{2m}}d^3p\\
+	 = \frac{V}{h^3}  \int_p e^{-\beta \frac{p^2}{2m}}d^3p \tag*{a}
+	 %%\left(\frac{2\pi m}{\beta}\right)^{3/2}
+\end{gathered}\]
+
+observe that \(p^2 = p_x ^2 + p_y ^2 + p_z ^2\) and \(d^3 p= d p_x dp_y dp_z\). 
+We'll make an assumption
+
+\begin{assume}[Equipartition theorem]
+	Energy is distributed equally among all the degrees of freedom.
+	In other words if total energy is \(E\) and there are \(d\) degree of freedom. Then each
+	degree of freedom contains \(\frac{E}{d}\) amount of energy.
+\end{assume}
+
+The above form of \(p^2\) becomes \(p^2 = 3 \bar{p} ^2\) and \(d^3 p = (d \bar{p})^3\). And equation 
+\ref{a} becomes 
+\[\begin{gathered}
+	\zeta = \frac{V}{h^3}  \int_p e^{-\beta \frac{p^2}{2m}}d^3p \\
+	= \frac{V}{h^3} \left(\int_p e^{-\beta \frac{\bar{p}^2}{2m}}d \bar{p}\right)^3\\
+	\zeta = \frac{V}{h^3}\left(\frac{2\pi m}{\beta}\right)^{3/2}
+\end{gathered}\]
+
+Hence, we have taken an ideal gas consisting of identical \(N\) particles. 
+The partition function for the whaole system is 
+\[\begin{gathered}
+	z = \frac{(\zeta)^N}{N!}\\
+	z = \frac{V^N}{h^{3N}N!}\left(\frac{2\pi m}{\beta}\right)^{3N/2}\\
+	\log(z) = N \log(V) + \frac{3N}{2}
+\log(2\pi m)-  \frac{3N}{2}\log(\beta) - \log(N!) - 3N\log(h)\end{gathered}\]
+Energy for the system is 
+\[\begin{gathered}
+	E = - \frac{\partial \log(z)}{\partial \beta} \\
+	= \frac{3N}{2\beta} \\
+	\boxed{E = \frac{3N}{2} k_b T}
+\end{gathered}\]
+
+Don't forget the Pressure from equation (i):
+\[\begin{gathered}
+	P = k_b T \left (\dfrac{\partial \log(z)}{\partial V} \right ) _{T}\\
+	P = k_b T \frac{N}{V} \implies \boxed{PV = N k_b T}
+ \end{gathered}\]
+\end{document}
