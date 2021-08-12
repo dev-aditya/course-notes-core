@@ -1,6 +1,6 @@
 # Course Notes
 
-This repository contains course notes typesetted in LaTeX, for core year. They are not complete, 
+This repository contains course notes typesetted in LaTeX, for core year. They are not complete (or may contain errors), 
 but might pe helpful. So, I keep it here. *The templates used in making these notes can be found [here](https://github.com/dev-aditya/LaTeX-template)*
 
 **Please feel free to share and edit the notes. Create an issue or PR in case you find any typographical errors or any other problem.**
