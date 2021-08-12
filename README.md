@@ -3,7 +3,7 @@
 This repository contains course notes typesetted in LaTeX, for core year. They are not complete, 
 but might pe helpful. So, I keep it here. *The templates used in making these notes can be found [here](https://github.com/dev-aditya/LaTeX-template)*
 
-**Please feel free to share and edit the notes. Feel free to create an issue or PR in case you find any typographical errors or any problem.**
+**Please feel free to share and edit the notes. Feel free to create an issue or PR in case you find any typographical errors or any other problem.**
 
 ## Courses
 
