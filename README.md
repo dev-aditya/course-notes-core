@@ -10,5 +10,5 @@ but might pe helpful. So, I keep it here.
 3. [PHY102: Electromagnetism](https://github.com/dev-aditya/course-notes-core/tree/master/PHY102:Electromagnetism)
 4. [PHY202: Statistical Mechanics](https://github.com/dev-aditya/course-notes-core/tree/master/PHY202:Statistical-Mechanics)
 
-## Some Random Stuff
+## Some Cool Stuff
 * [Pi in $\LaTeX{}$](https://github.com/dev-aditya/course-notes-core/tree/master/Pi:3.14...)
