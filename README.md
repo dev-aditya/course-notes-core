@@ -15,5 +15,5 @@ but might be helpful. So, I keep it here. *The templates used in making these no
 ## Some Cool Stuff
 * [Pi in LaTeX](https://github.com/dev-aditya/course-notes-core/tree/master/Pi:3.14...)
 ___________________________________
-### LICENCES
+### LICENCE
 **Creative Commons Attribution 4.0 International**
