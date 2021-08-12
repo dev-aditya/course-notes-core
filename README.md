@@ -1,7 +1,9 @@
 # Course Notes
 
-This repository contains course notes typesetted in $\LaTeX$, for core year. They are not complete, 
-but might pe helpful. So, I keep it here. 
+This repository contains course notes typesetted in LaTeX, for core year. They are not complete, 
+but might pe helpful. So, I keep it here. *The templates used in making these notes can be found [here](https://github.com/dev-aditya/LaTeX-template)*
+
+**Please feel free to share and edit the notes. Feel free to create an issue or PR in case you find any typographical errors or any problem.**
 
 ## Courses
 
@@ -11,4 +13,4 @@ but might pe helpful. So, I keep it here.
 4. [PHY202: Statistical Mechanics](https://github.com/dev-aditya/course-notes-core/tree/master/PHY202:Statistical-Mechanics)
 
 ## Some Cool Stuff
-* [Pi in $\LaTeX$](https://github.com/dev-aditya/course-notes-core/tree/master/Pi:3.14...)
+* [Pi in LaTeX](https://github.com/dev-aditya/course-notes-core/tree/master/Pi:3.14...)
