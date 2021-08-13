@@ -4,3 +4,5 @@ __latexindent_temp.tex
 *.out
 *.synctex.gz
 *.aux
+*.fls
+*.fdb_latexmk
