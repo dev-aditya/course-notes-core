@@ -1,4 +1,4 @@
-# Course Notes
+# Course Notes :notebook_with_decorative_cover:
 
 This repository contains course notes typesetted in LaTeX, for core year. They are not complete (or may contain errors), 
 but might be helpful. So, I keep it here. *The templates used in making these notes can be found [here](https://github.com/dev-aditya/LaTeX-template)*
