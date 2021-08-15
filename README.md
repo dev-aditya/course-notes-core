@@ -17,5 +17,5 @@ but might be helpful. So, I keep it here. *The templates used in making these no
 * [Periodic Table](https://github.com/dev-aditya/course-notes-core/tree/master/Misc/Periodic-table)
 ___________________________________
 ### LICENSE
-The text and figures are licensed under the Creative Commons Attribution 4.0 International Public License (CC-BY-4.0).
-[**Creative Commons Attribution 4.0 International**](https://github.com/dev-aditya/course-notes-core/blob/master/LICENSE)
+The text and figures are licensed under the [**Creative Commons Attribution 4.0 International**](https://github.com/dev-aditya/course-notes-core/blob/master/LICENSE) (CC-BY-4.0).
+
